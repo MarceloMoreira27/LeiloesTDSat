@@ -26,7 +26,7 @@ public class conectaDAO {
             
             String url = "jdbc:mysql://localhost:3306/leiloestdsat?useTimezone=true&serverTimezone=UTC";
             String usuario = "root";
-            String senha = "J@va.2024"; 
+            String senha = ""; 
         
             conn = DriverManager.getConnection(url, usuario, senha);
             
@@ -35,23 +35,6 @@ public class conectaDAO {
         }
         return conn;
     }
-    
-    
-    
-    public static void main(String[] args) {
-    conectaDAO teste = new conectaDAO();
-    Connection c = teste.connectDB();
-    
-    if (c != null) {
-        System.out.println("PARABÉNS! Conexão estabelecida com o banco leiloestdsat.");
-        try { 
-            c.close(); // Fecha a conexão após o teste
-        } catch (Exception e) {}
-    } else {
-        System.out.println("ERRO: Não foi possível conectar. Verifique se o MySQL está ligado.");
-    }
-}
-    
-    
+  
     
 }

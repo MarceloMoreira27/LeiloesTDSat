@@ -2,6 +2,7 @@ package view;
 
 import model.ProdutosDTO;
 import dao.ProdutosDAO;
+import javax.swing.JOptionPane;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -19,6 +20,29 @@ public class cadastroVIEW extends javax.swing.JFrame {
      */
     public cadastroVIEW() {
         initComponents();
+    }
+    
+    
+    public void limparCampos(){
+         
+        cadastroNome.setText("");
+        cadastroValor.setText("");
+        cadastroNome.requestFocus();
+        
+    }
+    
+    public boolean vericaCampos(String nome,String valorStr){
+        
+       if (nome.trim().isEmpty() || valorStr.trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Preencha todos os campos antes de salvar.");
+            return false;
+        }
+       
+       if(!valorStr.matches("\\d+")){
+           JOptionPane.showMessageDialog(null, "Valor deve conter apenas números.");
+            return false;
+       }
+       return true;
     }
 
     /**
@@ -42,6 +66,7 @@ public class cadastroVIEW extends javax.swing.JFrame {
         btnProdutos = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jLabel1.setFont(new java.awt.Font("Lucida Fax", 0, 24)); // NOI18N
         jLabel1.setText("Sistema de Leilões");
@@ -145,17 +170,33 @@ public class cadastroVIEW extends javax.swing.JFrame {
     }//GEN-LAST:event_cadastroNomeActionPerformed
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
-        ProdutosDTO produto = new ProdutosDTO();
+        
         String nome = cadastroNome.getText();
-        String valor = cadastroValor.getText();
-        String status = "A Venda";
-        produto.setNome(nome);
-        produto.setValor(Integer.parseInt(valor));
-        produto.setStatus(status);
+        String valorStr = cadastroValor.getText();
+        String status = "A Venda"; 
         
-        ProdutosDAO produtodao = new ProdutosDAO();
-        produtodao.cadastrarProduto(produto);
+        ProdutosDTO produto = new ProdutosDTO();
+
+        if(vericaCampos(nome, valorStr)){
         
+            try {
+                
+                produto.setNome(nome);
+                produto.setValor(Integer.valueOf(valorStr));
+                produto.setStatus(status);
+
+                ProdutosDAO produtodao = new ProdutosDAO();
+                produtodao.cadastrarProduto(produto);
+                
+                limparCampos();
+
+            
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Erro ao cadastrar: " + e.getMessage());
+            }
+    
+        }
+       
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
     private void btnProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProdutosActionPerformed
