@@ -26,7 +26,7 @@ public class conectaDAO {
             
             String url = "jdbc:mysql://localhost:3306/leiloestdsat?useTimezone=true&serverTimezone=UTC";
             String usuario = "root";
-            String senha = ""; 
+            String senha = "J@va.2024"; 
         
             conn = DriverManager.getConnection(url, usuario, senha);
             

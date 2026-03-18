@@ -46,6 +46,8 @@ public class listagemVIEW extends javax.swing.JFrame {
         btnVoltar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocation(new java.awt.Point(0, 0));
+        setResizable(false);
 
         listaProdutos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -137,6 +139,7 @@ public class listagemVIEW extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVenderActionPerformed
