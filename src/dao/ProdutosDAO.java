@@ -84,8 +84,31 @@ public class ProdutosDAO {
         return listagem;
     }
     
-    
-    
+    public String buscarStatus(int id) {
         
+        conn = new conectaDAO().connectDB();
+        
+        String sql = "SELECT status FROM produtos WHERE id = ?";
+    
+        try {
+            prep = conn.prepareStatement(sql);
+            prep.setInt(1, id);
+        
+            resultset = prep.executeQuery();
+        
+            if (resultset.next()) {
+                return resultset.getString("status");
+            } 
+         
+        } catch (SQLException erro) {
+            JOptionPane.showMessageDialog(null, "Erro ao buscar Id: " + id + " - " + erro.getMessage());
+            
+        }finally {
+            try { if (prep != null) prep.close(); } catch (SQLException e) {}
+        }
+    
+            return null;
+            
+        }
 }
 
