@@ -129,7 +129,10 @@ public class ProdutosDAO {
             } catch (SQLException erro) {
                 JOptionPane.showMessageDialog(null, "Erro ao vender produto: " + erro.getMessage());
                 
-            }
+            }finally {
+            
+                try { if (prep != null) prep.close(); } catch (SQLException e) {}
+        }
             
         }
 
