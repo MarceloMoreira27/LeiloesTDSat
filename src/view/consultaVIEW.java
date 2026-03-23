@@ -14,11 +14,39 @@ public class ConsultaVIEW extends javax.swing.JFrame {
 
     public ConsultaVIEW() {
         initComponents();
-       
+        listarProdutosVendidos();
     }
 
     
     @SuppressWarnings("unchecked")
+    
+    
+   private void listarProdutosVendidos() {
+        try {
+            ProdutosDAO produtosdao = new ProdutosDAO();
+        
+            DefaultTableModel model = (DefaultTableModel) listaProdutos.getModel();
+            model.setNumRows(0); 
+        
+            ArrayList<ProdutosDTO> listagem = produtosdao.listarProdutos();
+        
+            for (int i = 0; i < listagem.size(); i++) {
+           
+            if (listagem.get(i).getStatus().equalsIgnoreCase("Vendido")) {
+                
+                model.addRow(new Object[]{
+                    listagem.get(i).getId(),
+                    listagem.get(i).getNome(),
+                    listagem.get(i).getValor(),
+                    listagem.get(i).getStatus()
+                });
+            }
+        }
+            
+        } catch (Exception e) {
+       
+    }
+}
     
    
 
@@ -134,6 +162,18 @@ public class ConsultaVIEW extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(ConsultaVIEW.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
