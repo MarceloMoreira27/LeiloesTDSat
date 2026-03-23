@@ -1,7 +1,7 @@
 package model;
 
 
-import view.cadastroVIEW;
+import view.CadastroVIEW;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -16,7 +16,7 @@ public class Main {
     
     public static void main(String[] args) {
 
-        cadastroVIEW tela = new cadastroVIEW();
+        CadastroVIEW tela = new CadastroVIEW();
         
         tela.setVisible(true);
                
