@@ -132,7 +132,7 @@ public class ProdutosDAO {
             }finally {
             
                 try { if (prep != null) prep.close(); } catch (SQLException e) {}
-        }
+            }
             
         }
 
