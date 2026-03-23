@@ -127,9 +127,6 @@
               <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
             </Property>
           </Properties>
-          <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="listaProdutosMouseClicked"/>
-          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -156,7 +153,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTextPane" name="txt_id_produto_venda">
+        <Component class="javax.swing.JTextPane" name="id_produto_venda">
         </Component>
       </SubComponents>
     </Container>
