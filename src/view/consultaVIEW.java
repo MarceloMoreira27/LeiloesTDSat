@@ -21,19 +21,18 @@ public class ConsultaVIEW extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     
     
-   private void listarProdutosVendidos() {
+ 
+   
+ public void listarProdutosVendidos(){
         try {
             ProdutosDAO produtosdao = new ProdutosDAO();
-        
-            DefaultTableModel model = (DefaultTableModel) listaProdutos.getModel();
-            model.setNumRows(0); 
-        
-            ArrayList<ProdutosDTO> listagem = produtosdao.listarProdutos();
-        
-            for (int i = 0; i < listagem.size(); i++) {
-           
-            if (listagem.get(i).getStatus().equalsIgnoreCase("Vendido")) {
-                
+            
+            DefaultTableModel model = (DefaultTableModel)tblProdutosVendidos.getModel();
+            model.setNumRows(0);
+            
+            ArrayList<ProdutosDTO> listagem = produtosdao.listarProdutosVendidos();
+            
+            for(int i = 0; i < listagem.size(); i++){
                 model.addRow(new Object[]{
                     listagem.get(i).getId(),
                     listagem.get(i).getNome(),
@@ -41,20 +40,19 @@ public class ConsultaVIEW extends javax.swing.JFrame {
                     listagem.get(i).getStatus()
                 });
             }
-        }
-            
         } catch (Exception e) {
-       
-    }
-}
+        }
     
    
+}
+    
+ 
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        listaProdutos = new javax.swing.JTable();
+        tblProdutosVendidos = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         btnVoltar = new javax.swing.JButton();
@@ -63,7 +61,7 @@ public class ConsultaVIEW extends javax.swing.JFrame {
         setLocation(new java.awt.Point(0, 0));
         setResizable(false);
 
-        listaProdutos.setModel(new javax.swing.table.DefaultTableModel(
+        tblProdutosVendidos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -74,12 +72,12 @@ public class ConsultaVIEW extends javax.swing.JFrame {
                 "ID", "Nome", "Valor", "Status"
             }
         ));
-        listaProdutos.addMouseListener(new java.awt.event.MouseAdapter() {
+        tblProdutosVendidos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                listaProdutosMouseClicked(evt);
+                tblProdutosVendidosMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(listaProdutos);
+        jScrollPane1.setViewportView(tblProdutosVendidos);
 
         jLabel1.setFont(new java.awt.Font("Lucida Fax", 0, 18)); // NOI18N
         jLabel1.setText("Lista de Produtos Vendidos");
@@ -133,9 +131,9 @@ public class ConsultaVIEW extends javax.swing.JFrame {
         tela.setVisible(true);
     }//GEN-LAST:event_btnVoltarActionPerformed
 
-    private void listaProdutosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listaProdutosMouseClicked
+    private void tblProdutosVendidosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblProdutosVendidosMouseClicked
         
-    }//GEN-LAST:event_listaProdutosMouseClicked
+    }//GEN-LAST:event_tblProdutosVendidosMouseClicked
 
     /**
      * @param args the command line arguments
@@ -192,7 +190,7 @@ public class ConsultaVIEW extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTable listaProdutos;
+    private javax.swing.JTable tblProdutosVendidos;
     // End of variables declaration//GEN-END:variables
 
    }
