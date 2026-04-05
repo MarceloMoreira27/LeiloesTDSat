@@ -22,10 +22,10 @@ public class conectaDAO {
         
         try {
         
-            String url = "jdbc:mysql://localhost:3306/"
-                    + "leiloestdsat?useTimezone=true&serverTimezone=UTC&useSSL=false";
+           String url = "jdbc:mysql://localhost:3306/" 
+           + "leiloestdsat?useTimezone=true&serverTimezone=UTC&useSSL=false&allowPublicKeyRetrieval=true";
             String usuario = "root";
-            String senha = ""; 
+            String senha = "J@va.2024"; 
         
             conn = DriverManager.getConnection(url, usuario, senha);
             
