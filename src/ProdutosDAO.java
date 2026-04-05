@@ -97,7 +97,7 @@ public class ProdutosDAO {
 
     public void venderProduto(int id) {
         conn = new conectaDAO().connectDB();
-        
+
         String sqlCheck = "SELECT status FROM produtos WHERE id = ?";
         String sqlUpdate = "UPDATE produtos SET status = 'Vendido' WHERE id = ?";
         String statusAtual = "";
@@ -145,5 +145,44 @@ public class ProdutosDAO {
         }
 
     }
-    
+
+    public ArrayList<ProdutosDTO> listarProdutosVendidos() {
+        String sql = "SELECT * FROM produtos WHERE status = 'Vendido'";
+        conn = new conectaDAO().connectDB();
+
+        try {
+
+            prep = conn.prepareStatement(sql);
+            resultset = prep.executeQuery();
+
+            while (resultset.next()) {
+                ProdutosDTO produto = new ProdutosDTO();
+                produto.setId(resultset.getInt("id"));
+                produto.setNome(resultset.getString("nome"));
+                produto.setValor(resultset.getInt("valor"));
+                produto.setStatus(resultset.getString("status"));
+
+                listagem.add(produto);
+            }
+        } catch (SQLException erro) {
+            JOptionPane.showMessageDialog(null, "Erro ao filtrar vendas no DAO: " + erro.getMessage());
+        } finally {
+            try {
+                if (prep != null) {
+                    prep.close();
+                }
+                if (conn != null) {
+                    conn.close();
+                }
+
+            } catch (SQLException errro) {
+                System.out.println("Erro ao fechar conexões: " + errro.getMessage());
+
+            }
+        }
+
+        return listagem;
+
+    }
+
 }
